@@ -1,0 +1,58 @@
+Bagian 1: eps untuk parameter benchmark (margin L/2)
+  L= 256 ( 3,  5): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 ( 5, 10): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 (10, 20): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 (20, 40): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 (50,100): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L=1024 ( 3,  5): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 ( 5, 10): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 (10, 20): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 (20, 40): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 (50,100): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=2048 ( 3,  5): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 ( 5, 10): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 (10, 20): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 (20, 40): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 (50,100): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+Bagian 2: eps terhadap margin, L = 256
+  margin  20 ( 5, 10): syarat terpenuhi, log2 eps antara -236.00 dan -236.00
+  margin  20 (50,100): syarat terpenuhi, log2 eps antara -236.69 dan -235.99
+  margin  24 ( 5, 10): syarat terpenuhi, log2 eps antara -232.00 dan -232.00
+  margin  24 (50,100): syarat terpenuhi, log2 eps antara -232.05 dan -232.00
+  margin  28 ( 5, 10): syarat terpenuhi, log2 eps antara -228.00 dan -228.00
+  margin  28 (50,100): syarat terpenuhi, log2 eps antara -228.00 dan -228.00
+  margin  32 ( 5, 10): syarat terpenuhi, log2 eps antara -224.00 dan -224.00
+  margin  32 (50,100): syarat terpenuhi, log2 eps antara -224.00 dan -224.00
+  margin  48 ( 5, 10): syarat terpenuhi, log2 eps antara -208.00 dan -208.00
+  margin  48 (50,100): syarat terpenuhi, log2 eps antara -208.00 dan -208.00
+  margin  64 ( 5, 10): syarat terpenuhi, log2 eps antara -192.00 dan -192.00
+  margin  64 (50,100): syarat terpenuhi, log2 eps antara -192.00 dan -192.00
+  margin  96 ( 5, 10): syarat terpenuhi, log2 eps antara -160.00 dan -160.00
+  margin  96 (50,100): syarat terpenuhi, log2 eps antara -160.00 dan -160.00
+  margin 128 ( 5, 10): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  margin 128 (50,100): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  margin 160 ( 5, 10): syarat terpenuhi, log2 eps antara -96.00 dan -96.00
+  margin 160 (50,100): syarat terpenuhi, log2 eps antara -96.00 dan -96.00
+  margin 192 ( 5, 10): syarat terpenuhi, log2 eps antara -64.00 dan -64.00
+  margin 192 (50,100): syarat terpenuhi, log2 eps antara -64.00 dan -64.00
+  margin 224 ( 5, 10): syarat terpenuhi, log2 eps antara -32.00 dan -32.00
+  margin 224 (50,100): syarat terpenuhi, log2 eps antara -32.00 dan -32.00
+  margin 240 ( 5, 10): syarat terpenuhi, log2 eps antara -16.00 dan -16.00
+  margin 240 (50,100): syarat terpenuhi, log2 eps antara -16.00 dan -16.00
+Bagian 3: eps untuk modulus saling prima yang tidak harus prima
+  L= 256 ( 3,  5): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 ( 5, 10): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 (10, 20): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 (20, 40): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L= 256 (50,100): syarat terpenuhi, log2 eps antara -128.00 dan -128.00
+  L=1024 ( 3,  5): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 ( 5, 10): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 (10, 20): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 (20, 40): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=1024 (50,100): syarat terpenuhi, log2 eps antara -512.00 dan -512.00
+  L=2048 ( 3,  5): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 ( 5, 10): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 (10, 20): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 (20, 40): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+  L=2048 (50,100): syarat terpenuhi, log2 eps antara -1024.00 dan -1024.00
+hasil: results/keamanan.csv

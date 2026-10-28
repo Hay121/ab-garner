@@ -1,0 +1,51 @@
+Uji kebenaran, seed 12345
+L=64 k=2 n=3 ...
+  lulus
+L=64 k=3 n=5 ...
+  lulus
+L=64 k=5 n=10 ...
+  lulus
+L=64 k=5 n=5 ...
+  lulus
+L=256 k=3 n=5 ...
+  lulus
+L=256 k=5 n=10 ...
+  lulus
+L=256 k=10 n=20 ...
+  lulus
+L=256 k=20 n=40 ...
+  lulus
+L=2048 k=3 n=5 ...
+  lulus
+L=2048 k=10 n=20 ...
+  lulus
+L=1024 k=5 n=10 ...
+  lulus
+L=1024 k=10 n=10 ...
+  lulus
+L=256 k=50 n=100 ...
+  lulus
+L=1024 k=50 n=100 ...
+  lulus
+modulus saling prima: L=64, k=3, n=5
+modulus saling prima: L=256, k=3, n=5
+modulus saling prima: L=256, k=10, n=20
+modulus saling prima: L=256, k=50, n=100
+modulus saling prima: L=1024, k=10, n=10
+modulus saling prima: L=2048, k=10, n=20
+Uji kebocoran skala kecil (semua pasangan peserta):
+  rahasia S = 32; y < floor(Mk/m0)*m0 = 29884160
+  peserta 1 dan 2: 313 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1416 (rumus 0.1416)
+  peserta 1 dan 3: 311 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1389 (rumus 0.1389)
+  peserta 1 dan 4: 307 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1330 (rumus 0.1331)
+  peserta 1 dan 5: 294 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1101 (rumus 0.1102)
+  peserta 2 dan 3: 307 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1330 (rumus 0.1330)
+  peserta 2 dan 4: 303 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1266 (rumus 0.1268)
+  peserta 2 dan 5: 291 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1038 (rumus 0.1023)
+  peserta 3 dan 4: 301 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.1232 (rumus 0.1235)
+  peserta 3 dan 5: 289 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.0995 (rumus 0.0982)
+  peserta 4 dan 5: 285 kandidat y, 256 dari 256 nilai rahasia mungkin, jarak statistik 0.0902 (rumus 0.0898)
+  jarak statistik terbesar 0.1416 (peserta 1 dan 2)
+Jalur pembagian eksak: satu word 115168 kali, mpz 15562 kali, cara lama 2343 kali
+
+Total pemeriksaan: 129669, gagal: 0

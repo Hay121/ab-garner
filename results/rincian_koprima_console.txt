@@ -1,0 +1,20 @@
+Rincian usulan B, modulus saling prima (median 30 pengulangan x 50 pemanggilan)
+L=256: ambang jalur GMP 128 bit
+L= 256 ( 3,  5): tahap Horner 14%, D 10%, invers 29%, kali+reduksi 37%, Horner 2^L 10%; bit s 258, D 6 (modulus 257), penyebut Shamir 3; jalur word/mpz/lama 100/0/0%
+L= 256 ( 5, 10): tahap Horner 13%, D 9%, invers 31%, kali+reduksi 40%, Horner 2^L 8%; bit s 270, D 18 (modulus 257), penyebut Shamir 9; jalur word/mpz/lama 100/0/0%
+L= 256 (10, 20): tahap Horner 15%, D 9%, invers 35%, kali+reduksi 35%, Horner 2^L 6%; bit s 302, D 50 (modulus 257), penyebut Shamir 28; jalur word/mpz/lama 61/39/0%
+L= 256 (20, 40): tahap Horner 20%, D 9%, invers 39%, kali+reduksi 27%, Horner 2^L 4%; bit s 378, D 126 (modulus 257), penyebut Shamir 77; jalur word/mpz/lama 32/68/0%
+L= 256 (50,100): tahap Horner 24%, D 12%, invers 46%, kali+reduksi 16%, Horner 2^L 2%; bit s 650, D 400 (modulus 257), penyebut Shamir 260; jalur word/mpz/lama 12/27/61%
+L=1024: ambang jalur GMP 704 bit
+L=1024 ( 3,  5): tahap Horner 9%, D 6%, invers 21%, kali+reduksi 57%, Horner 2^L 7%; bit s 1025, D 6 (modulus 1025), penyebut Shamir 3; jalur word/mpz/lama 100/0/0%
+L=1024 ( 5, 10): tahap Horner 9%, D 4%, invers 22%, kali+reduksi 59%, Horner 2^L 6%; bit s 1038, D 18 (modulus 1025), penyebut Shamir 10; jalur word/mpz/lama 100/0/0%
+L=1024 (10, 20): tahap Horner 12%, D 4%, invers 24%, kali+reduksi 55%, Horner 2^L 5%; bit s 1067, D 48 (modulus 1025), penyebut Shamir 29; jalur word/mpz/lama 67/33/0%
+L=1024 (20, 40): tahap Horner 17%, D 5%, invers 30%, kali+reduksi 46%, Horner 2^L 3%; bit s 1146, D 126 (modulus 1025), penyebut Shamir 77; jalur word/mpz/lama 32/68/0%
+L=1024 (50,100): tahap Horner 24%, D 8%, invers 38%, kali+reduksi 28%, Horner 2^L 2%; bit s 1422, D 404 (modulus 1025), penyebut Shamir 261; jalur word/mpz/lama 12/88/0%
+L=2048: ambang jalur GMP 1984 bit
+L=2048 ( 3,  5): tahap Horner 5%, D 3%, invers 15%, kali+reduksi 73%, Horner 2^L 4%; bit s 2050, D 5 (modulus 2049), penyebut Shamir 3; jalur word/mpz/lama 100/0/0%
+L=2048 ( 5, 10): tahap Horner 5%, D 2%, invers 15%, kali+reduksi 74%, Horner 2^L 4%; bit s 2061, D 17 (modulus 2049), penyebut Shamir 8; jalur word/mpz/lama 100/0/0%
+L=2048 (10, 20): tahap Horner 8%, D 2%, invers 16%, kali+reduksi 71%, Horner 2^L 3%; bit s 2094, D 51 (modulus 2049), penyebut Shamir 28; jalur word/mpz/lama 67/33/0%
+L=2048 (20, 40): tahap Horner 13%, D 3%, invers 20%, kali+reduksi 62%, Horner 2^L 2%; bit s 2170, D 127 (modulus 2049), penyebut Shamir 78; jalur word/mpz/lama 29/71/0%
+L=2048 (50,100): tahap Horner 22%, D 5%, invers 29%, kali+reduksi 43%, Horner 2^L 2%; bit s 2441, D 398 (modulus 2049), penyebut Shamir 260; jalur word/mpz/lama 12/88/0%
+hasil: results/rincian_koprima.csv

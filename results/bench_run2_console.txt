@@ -1,0 +1,275 @@
+proses dikunci pada core 2 dengan prioritas tinggi
+paket=utama seed=12345 (GMP 6.3.0; gcc 16.2.0; opsi -O2 -std=c11 -Wall -Wextra)
+reps=30 inner=50 warmup=3
+
+=== L=256 bit, k=3, n=5 ===
+kalibrasi ambang: 16.0 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 128 bit, Shamir 64 bit
+setup: Asmuth-Bloom 2344.8 us (tabel 2.2 us, 10 entri, 320 byte), Shamir 425.0 us
+ukuran share: Asmuth-Bloom 257 bit, Shamir 257 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share                0.866        0.805        0.886
+shamir_share            1.108        1.078        1.130
+ab_diff                 1.463        1.418        1.477
+ab_diff_exact           1.131        1.123        1.148
+ab_table                1.047        0.980        1.062
+ab_garner_inv           1.657        1.629        1.777
+ab_classic              2.110        2.077        2.204
+shamir_naive            1.552        1.498        1.591
+shamir_batch            2.535        2.501        2.599
+shamir_small            0.975        0.933        0.982
+shamir_exact            1.021        0.972        1.053
+
+=== L=256 bit, k=5, n=10 ===
+kalibrasi ambang: 21.9 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 128 bit, Shamir 128 bit
+setup: Asmuth-Bloom 3459.8 us (tabel 18.0 us, 45 entri, 1440 byte), Shamir 400.1 us
+ukuran share: Asmuth-Bloom 257 bit, Shamir 257 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share                2.049        1.940        2.095
+shamir_share            3.302        3.254        3.332
+ab_diff                 2.487        2.463        2.581
+ab_diff_exact           2.177        2.074        2.228
+ab_table                2.280        2.181        2.374
+ab_garner_inv           3.170        3.125        3.408
+ab_classic              4.280        4.104        4.412
+shamir_naive            3.030        2.952        3.108
+shamir_batch            4.815        4.763        4.945
+shamir_small            1.459        1.424        1.483
+shamir_exact            1.624        1.586        1.647
+
+=== L=256 bit, k=10, n=20 ===
+kalibrasi ambang: 15.4 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 64 bit, Shamir 128 bit
+setup: Asmuth-Bloom 7451.9 us (tabel 37.7 us, 190 entri, 6080 byte), Shamir 392.3 us
+ukuran share: Asmuth-Bloom 257 bit, Shamir 257 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share                6.743        6.529        6.906
+shamir_share           12.840       12.762       13.116
+ab_diff                 6.253        6.205        6.298
+ab_diff_exact           6.253        6.199        6.293
+ab_table                7.754        7.617        7.874
+ab_garner_inv           9.122        9.008        9.244
+ab_classic             13.417       13.226       13.512
+shamir_naive            9.089        8.968        9.164
+shamir_batch           12.800       12.702       12.904
+shamir_small            2.927        2.875        2.998
+shamir_exact            3.283        3.220        3.372
+
+=== L=256 bit, k=20, n=40 ===
+kalibrasi ambang: 21.5 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 128 bit, Shamir 128 bit
+setup: Asmuth-Bloom 14296.9 us (tabel 155.8 us, 780 entri, 24960 byte), Shamir 390.1 us
+ukuran share: Asmuth-Bloom 257 bit, Shamir 257 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share               25.161       25.059       25.462
+shamir_share           53.489       53.251       53.995
+ab_diff                19.149       18.941       19.253
+ab_diff_exact          20.043       19.877       20.199
+ab_table               29.283       29.165       29.476
+ab_garner_inv          31.274       31.022       31.926
+ab_classic             50.071       49.737       50.553
+shamir_naive           31.068       30.783       31.145
+shamir_batch           36.784       36.709       36.947
+shamir_small            9.478        9.245        9.556
+shamir_exact           13.113       12.923       13.286
+
+=== L=256 bit, k=50, n=100 ===
+kalibrasi ambang: 15.4 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 64 bit, Shamir 128 bit
+setup: Asmuth-Bloom 35513.3 us (tabel 952.1 us, 4950 entri, 158400 byte), Shamir 404.0 us
+ukuran share: Asmuth-Bloom 257 bit, Shamir 257 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share              149.058      148.262      150.944
+shamir_share          339.446      336.810      344.792
+ab_diff                87.708       85.954       89.280
+ab_diff_exact          88.343       87.088       90.236
+ab_table              178.094      176.762      181.864
+ab_garner_inv         158.960      156.799      161.189
+ab_classic            253.804      251.475      258.735
+shamir_naive          184.534      182.475      187.012
+shamir_batch          177.270      174.959      179.973
+shamir_small           63.740       62.411       65.006
+shamir_exact           75.424       74.494       76.646
+
+=== L=1024 bit, k=3, n=5 ===
+kalibrasi ambang: 99.3 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 896 bit, Shamir 896 bit
+setup: Asmuth-Bloom 65918.1 us (tabel 2.5 us, 10 entri, 1280 byte), Shamir 17187.9 us
+ukuran share: Asmuth-Bloom 1025 bit, Shamir 1025 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share                3.666        3.640        3.718
+shamir_share            1.396        1.339        1.436
+ab_diff                 2.423        2.374        2.444
+ab_diff_exact           1.387        1.378        1.401
+ab_table                2.638        2.618        2.668
+ab_garner_inv           3.895        3.877        3.948
+ab_classic              6.714        6.659        6.763
+shamir_naive            2.434        2.176        3.058
+shamir_batch            4.385        3.950        4.831
+shamir_small            1.861        1.664        1.885
+shamir_exact            1.372        1.256        1.456
+
+=== L=1024 bit, k=5, n=10 ===
+kalibrasi ambang: 99.6 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 896 bit, Shamir 896 bit
+setup: Asmuth-Bloom 149730.2 us (tabel 11.3 us, 45 entri, 5760 byte), Shamir 17180.5 us
+ukuran share: Asmuth-Bloom 1025 bit, Shamir 1025 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share               12.190       12.137       12.276
+shamir_share            4.194        4.121        4.305
+ab_diff                 4.617        4.565        4.693
+ab_diff_exact           2.898        2.873        2.961
+ab_table                7.780        7.754        7.844
+ab_garner_inv          10.934       10.897       11.014
+ab_classic             19.271       19.151       19.359
+shamir_naive            5.478        5.183        5.687
+shamir_batch            9.119        8.843        9.417
+shamir_small            2.765        2.717        2.795
+shamir_exact            2.263        2.253        2.295
+
+=== L=1024 bit, k=10, n=20 ===
+kalibrasi ambang: 88.4 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 832 bit, Shamir 832 bit
+setup: Asmuth-Bloom 372038.4 us (tabel 57.8 us, 190 entri, 24320 byte), Shamir 17239.6 us
+ukuran share: Asmuth-Bloom 1025 bit, Shamir 1025 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share               51.707       50.818       51.862
+shamir_share           17.311       17.174       17.561
+ab_diff                12.401       12.258       12.514
+ab_diff_exact           9.301        9.201        9.404
+ab_table               34.734       34.183       34.944
+ab_garner_inv          46.642       45.937       46.801
+ab_classic             84.867       84.260       85.820
+shamir_naive           16.554       16.309       16.828
+shamir_batch           24.364       24.169       24.682
+shamir_small            5.668        5.608        5.716
+shamir_exact            4.809        4.753        4.919
+
+=== L=1024 bit, k=20, n=40 ===
+kalibrasi ambang: 100.6 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 896 bit, Shamir 896 bit
+setup: Asmuth-Bloom 623778.1 us (tabel 230.0 us, 780 entri, 99840 byte), Shamir 17320.1 us
+ukuran share: Asmuth-Bloom 1025 bit, Shamir 1025 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share              205.440      204.784      206.582
+shamir_share           67.200       66.795       67.623
+ab_diff                32.585       32.360       32.866
+ab_diff_exact          28.975       28.717       29.309
+ab_table              141.949      141.352      143.160
+ab_garner_inv         183.693      182.349      184.736
+ab_classic            333.063      331.117      334.836
+shamir_naive           48.171       47.566       48.930
+shamir_batch           66.673       66.265       66.955
+shamir_small           15.213       14.842       15.655
+shamir_exact           16.791       16.450       17.389
+
+=== L=1024 bit, k=50, n=100 ===
+kalibrasi ambang: 97.6 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 896 bit, Shamir 832 bit
+setup: Asmuth-Bloom 1649656.6 us (tabel 1487.9 us, 4950 entri, 633600 byte), Shamir 17599.0 us
+ukuran share: Asmuth-Bloom 1025 bit, Shamir 1025 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share             1297.818     1274.008     1366.606
+shamir_share          424.729      417.910      448.905
+ab_diff               176.478      174.810      181.484
+ab_diff_exact         182.344      178.523      185.350
+ab_table              917.436      904.215      948.256
+ab_garner_inv        1180.528     1166.699     1206.966
+ab_classic           2221.829     2196.652     2306.810
+shamir_naive          250.888      247.538      260.686
+shamir_batch          275.579      271.438      287.419
+shamir_small           85.879       83.954       87.741
+shamir_exact           97.314       95.904       98.753
+
+=== L=2048 bit, k=3, n=5 ===
+kalibrasi ambang: 177.6 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 1920 bit, Shamir 1920 bit
+setup: Asmuth-Bloom 786430.3 us (tabel 6.0 us, 10 entri, 2560 byte), Shamir 134632.9 us
+ukuran share: Asmuth-Bloom 2049 bit, Shamir 2049 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share               11.487       11.433       11.560
+shamir_share            2.014        1.952        2.080
+ab_diff                 5.097        5.039        5.167
+ab_diff_exact           1.982        1.962        2.007
+ab_table                7.438        7.418        7.505
+ab_garner_inv          10.702       10.627       10.785
+ab_classic             19.880       19.771       20.119
+shamir_naive            4.194        3.925        6.974
+shamir_batch            8.217        8.012       11.135
+shamir_small            4.265        3.669        4.334
+shamir_exact            2.053        1.881        2.104
+
+=== L=2048 bit, k=5, n=10 ===
+kalibrasi ambang: 125.8 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 1856 bit, Shamir 1216 bit
+setup: Asmuth-Bloom 1585720.6 us (tabel 24.9 us, 45 entri, 11520 byte), Shamir 140335.9 us
+ukuran share: Asmuth-Bloom 2049 bit, Shamir 2049 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share               37.544       36.867       38.920
+shamir_share            5.539        5.450        5.613
+ab_diff                 9.235        9.069        9.535
+ab_diff_exact           3.816        3.743        3.877
+ab_table               22.232       21.919       23.224
+ab_garner_inv          31.246       30.657       32.934
+ab_classic             56.237       55.240       58.000
+shamir_naive           10.682       10.037       11.864
+shamir_batch           19.375       18.424       20.017
+shamir_small            6.016        5.956        6.289
+shamir_exact            3.252        3.194        3.339
+
+=== L=2048 bit, k=10, n=20 ===
+kalibrasi ambang: 157.8 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 1920 bit, Shamir 1824 bit
+setup: Asmuth-Bloom 2691733.8 us (tabel 82.2 us, 190 entri, 48640 byte), Shamir 129010.8 us
+ukuran share: Asmuth-Bloom 2049 bit, Shamir 2049 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share              159.816      158.254      168.475
+shamir_share           22.096       21.600       23.131
+ab_diff                23.761       23.078       24.643
+ab_diff_exact          12.190       11.849       12.554
+ab_table              100.350       97.919      104.669
+ab_garner_inv         136.664      134.919      143.240
+ab_classic            253.369      249.287      265.248
+shamir_naive           32.767       31.387       34.214
+shamir_batch           48.984       47.671       51.433
+shamir_small           11.572       11.359       12.011
+shamir_exact            6.805        6.529        6.977
+
+=== L=2048 bit, k=20, n=40 ===
+kalibrasi ambang: 152.1 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 1888 bit, Shamir 1792 bit
+setup: Asmuth-Bloom 5143770.6 us (tabel 335.2 us, 780 entri, 199680 byte), Shamir 132165.1 us
+ukuran share: Asmuth-Bloom 2049 bit, Shamir 2049 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share              655.622      636.751      691.753
+shamir_share           86.517       85.314       92.275
+ab_diff                59.294       57.524       62.866
+ab_diff_exact          38.354       37.028       41.300
+ab_table              412.030      404.057      423.400
+ab_garner_inv         566.514      547.886      598.486
+ab_classic           1031.274      999.546     1097.308
+shamir_naive           84.640       82.323       91.698
+shamir_batch          125.719      121.361      132.458
+shamir_small           27.692       26.828       28.828
+shamir_exact           21.930       21.237       23.250
+
+=== L=2048 bit, k=50, n=100 ===
+kalibrasi ambang: 154.8 ms (tidak termasuk setup)
+ambang jalur GMP pembagian eksak (kalibrasi): Asmuth-Bloom 1920 bit, Shamir 1696 bit
+setup: Asmuth-Bloom 16989240.4 us (tabel 2646.4 us, 4950 entri, 1267200 byte), Shamir 138040.5 us
+ukuran share: Asmuth-Bloom 2049 bit, Shamir 2049 bit
+metode                 median    kuartil 1    kuartil 3   (us per operasi, 30 rep x 50 pemanggilan)
+ab_share             4024.312     4012.390     4070.449
+shamir_share          530.747      529.600      533.434
+ab_diff               259.584      258.248      263.019
+ab_diff_exact         226.177      224.113      228.333
+ab_table             2605.436     2585.867     2621.053
+ab_garner_inv        3530.620     3515.742     3561.618
+ab_classic           6536.777     6503.208     6562.735
+shamir_naive          365.550      363.955      369.102
+shamir_batch          464.392      462.024      469.450
+shamir_small          118.800      117.116      120.291
+shamir_exact          116.562      115.399      117.864
+
+hasil mentah: results/bench_run2.csv

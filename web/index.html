@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garner Selisih Kecil: rekonstruksi Asmuth–Bloom pada modulus berdekatan</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="lompat" href="#demo">Langsung ke demo</a>
+<div class="kemajuan" aria-hidden="true"><span id="kemajuan"></span></div>
+
+<nav class="navigasi" aria-label="Bagian halaman">
+  <div class="navigasi-isi">
+    <a class="merek" href="#awal">Garner Selisih Kecil</a>
+    <div class="navigasi-tautan">
+      <a href="#ide" data-adegan="ide">Ide</a>
+      <a href="#demo" data-adegan="demo">Demo</a>
+      <a href="#hasil" data-adegan="hasil">Hasil</a>
+      <a href="#uji" data-adegan="uji">Uji</a>
+      <a href="#benchmark" data-adegan="benchmark">Benchmark</a>
+      <a href="#tentang" data-adegan="tentang">Tentang</a>
+    </div>
+    <button type="button" class="tombol-presentasi" id="tombol-presentasi" aria-pressed="false">Mode presentasi</button>
+  </div>
+</nav>
+
+<ol class="rel-adegan" aria-label="Posisi di halaman">
+  <li><a href="#awal" data-adegan="awal"><span>Pembuka</span></a></li>
+  <li><a href="#ide" data-adegan="ide"><span>Ide</span></a></li>
+  <li><a href="#demo" data-adegan="demo"><span>Demo</span></a></li>
+  <li><a href="#hasil" data-adegan="hasil"><span>Hasil</span></a></li>
+  <li><a href="#uji" data-adegan="uji"><span>Uji</span></a></li>
+  <li><a href="#benchmark" data-adegan="benchmark"><span>Benchmark</span></a></li>
+  <li><a href="#tentang" data-adegan="tentang"><span>Tentang</span></a></li>
+</ol>
+
+<header class="adegan pembuka" id="awal">
+  <canvas class="kunang" id="kunang" aria-hidden="true"></canvas>
+  <div class="bukit" aria-hidden="true">
+    <svg class="bukit-jauh" data-paralaks="0.10" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path d="M0,170 C150,118 290,150 430,112 C580,72 700,150 860,118 C1010,88 1170,58 1300,92 C1360,108 1410,96 1440,90 L1440,320 L0,320 Z"/>
+    </svg>
+    <svg class="bukit-dekat" data-paralaks="0.22" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path d="M0,238 C180,196 340,232 520,206 C700,180 860,246 1050,214 C1210,188 1330,176 1440,196 L1440,320 L0,320 Z"/>
+    </svg>
+  </div>
+
+  <div class="pembuka-isi">
+    <div class="pembuka-visual">
+      <p class="cincin-judul">Contoh kecil dari makalah: satu rahasia, empat peserta, tiga sudah cukup.</p>
+      <svg id="cincin" viewBox="0 0 400 452" aria-label="Empat jam sisa bagi milik empat peserta"></svg>
+      <p class="cincin-hitung" id="cincin-hitung" aria-live="polite"></p>
+      <p class="cincin-petunjuk"><span>Klik jam untuk mengeluarkan atau menghadirkan peserta.</span>
+        <button type="button" class="tombol-teks" id="cincin-ulang">Putar ulang</button></p>
+    </div>
+    <div class="pembuka-teks">
+      <p class="pembuka-konteks" id="id-matkul">Team Based Project Matematika Diskrit 2</p>
+      <h1>Garner Selisih Kecil</h1>
+      <p class="pembuka-judul">Percepatan rekonstruksi <span class="utuh">Asmuth–Bloom</span> dengan algoritme Garner pada modulus berdekatan</p>
+      <p class="pembuka-lead">Bagaimana membagi satu kunci kepada beberapa orang, sehingga kunci itu hanya bisa dibuka
+        kalau cukup banyak dari mereka berkumpul? Skema Asmuth–Bloom menjawabnya dengan sisa bagi. Kami membuat cara
+        membuka kuncinya jauh lebih cepat daripada rekonstruksi Asmuth–Bloom klasik.</p>
+      <p class="aksi">
+        <a class="tombol" href="#demo">Coba demo</a>
+        <a class="tombol kedua" href="#hasil">Lihat hasil</a>
+      </p>
+      <p class="pembuka-tim" id="id-kelompok" hidden></p>
+    </div>
+  </div>
+  <a class="isyarat-gulir" href="#ide"><span>Gulir</span></a>
+</header>
+
+<main>
+
+  <!-- ===================== IDE ===================== -->
+  <section class="adegan cerita" id="ide" data-tahap="1">
+    <div class="wadah">
+      <h2>Modulus yang bertetangga</h2>
+      <p class="lead">Kenapa membuka kunci bisa jauh lebih cepat? Jawabannya ada pada bilangan pembagi milik para peserta.
+        Gulir pelan-pelan.</p>
+    </div>
+    <div class="cerita-panggung">
+      <div class="wadah">
+        <p class="cerita-tahap" aria-hidden="true"><span id="cerita-nomor">Langkah 1 dari 4</span>
+          <span class="cerita-lanjut" id="cerita-lanjut">Gulir untuk lanjut</span></p>
+        <p class="cerita-keterangan" id="cerita-keterangan" aria-hidden="true"></p>
+        <figure class="dinding">
+          <div class="dinding-isi gulir" id="dinding-digit" role="img" aria-labelledby="dinding-ket"></div>
+          <figcaption class="sr" id="dinding-ket"></figcaption>
+        </figure>
+        <p class="rumus-besar">m<sub>b</sub> ≡ m<sub>b</sub> − m<sub>j</sub> (mod m<sub>j</sub>)</p>
+      </div>
+    </div>
+    <ol class="wadah cerita-langkah">
+      <li data-tahap="1"><p>Setiap peserta punya satu bilangan prima sebagai pembagi, disebut modulus. Kami memakai
+        bilangan prima yang berurutan, seperti lima modulus untuk rahasia 256 bit di atas.</p></li>
+      <li data-tahap="2"><p>Bilangannya sangat besar, masing-masing <span id="cerita-digit">78</span> digit. Tetapi
+        <span id="cerita-sama">74</span> digit pertamanya sama persis.</p></li>
+      <li data-tahap="3"><p>Yang berbeda hanya beberapa digit di ujung. Selisih antarmodulus di sini paling besar
+        <span id="cerita-selisih">1.198</span>, cukup kecil untuk disimpan dalam satu word komputer.</p></li>
+      <li data-tahap="4"><p>Saat membuka kunci, hitungannya membutuhkan sisa bagi satu modulus terhadap modulus lain. Untuk
+        bilangan yang bertetangga, m<sub>b</sub> kongruen dengan selisihnya, m<sub>b</sub> − m<sub>j</sub>,
+        modulo m<sub>j</sub>, dan selisih itu kecil. Perkalian bilangan raksasa berubah menjadi
+        perkalian dengan bilangan kecil, dan inilah yang membuat usulan B cepat.</p></li>
+    </ol>
+  </section>
+
+  <!-- ===================== DEMO ===================== -->
+  <section class="adegan" id="demo">
+    <div class="wadah">
+      <h2>Kumpulkan kartu, buka kuncinya</h2>
+      <p class="lead">Setiap peserta memegang satu kartu berisi potongan kunci, yang disebut share. Kartu yang terbuka
+        menandakan pesertanya hadir. Buka paling sedikit k kartu, lalu lihat bagaimana usulan B menyusun kembali kuncinya.</p>
+
+      <div id="panel-demo">
+        <section class="langkah-demo">
+          <h3><span class="nomor">1</span>Parameter dan rahasia</h3>
+          <p class="catatan">Pakai contoh makalah untuk mengikuti hitungan manual di Bab 3.8, atau bangkitkan modulus
+            sungguhan sampai 2048 bit.</p>
+          <fieldset class="pilih-sumber">
+            <legend>Sumber parameter</legend>
+            <label><input type="radio" name="demo-sumber" value="contoh" checked><span>Contoh makalah (modulus 23, 29, 31, 37)</span></label>
+            <label><input type="radio" name="demo-sumber" value="bangkit"><span>Bangkitkan sendiri dari L, k, dan n</span></label>
+          </fieldset>
+          <div class="form-baris">
+            <label class="isian sempit">L (bit)
+              <select id="demo-L">
+                <option>16</option><option>32</option><option>64</option><option>128</option>
+                <option selected>256</option><option>512</option><option>1024</option><option>2048</option>
+              </select>
+            </label>
+            <label class="isian sempit">k <input type="number" id="demo-k" min="2" max="10" value="3"></label>
+            <label class="isian sempit">n <input type="number" id="demo-n" min="2" max="20" value="5"></label>
+            <button type="button" class="tombol kedua" id="demo-bangkit">Bangkitkan parameter</button>
+          </div>
+          <p class="status" id="demo-status-param" role="status"></p>
+          <div class="form-baris">
+            <label class="isian lebar">Rahasia S (desimal, atau heksadesimal dengan awalan 0x)
+              <input type="text" id="demo-S" value="11" spellcheck="false" autocomplete="off">
+            </label>
+            <button type="button" class="tombol kedua" id="demo-acak-S">Rahasia acak</button>
+            <label class="centang"><input type="checkbox" id="demo-A-tetap" checked> pakai A = 321 seperti di makalah</label>
+            <button type="button" class="tombol" id="demo-bagi">Bagi rahasia</button>
+          </div>
+          <p class="status" id="demo-status-share" role="status"></p>
+          <div id="demo-y"></div>
+        </section>
+
+        <section class="langkah-demo">
+          <h3><span class="nomor">2</span>Kartu para peserta</h3>
+          <p class="catatan">Klik kartu untuk membukanya (peserta hadir) atau menutupnya (tidak hadir). Tombol
+            <em>rusak</em> di bawah kartu mengubah share-nya menjadi salah, untuk melihat apa yang terjadi kalau ada peserta
+            yang keliru atau curang.</p>
+          <div class="meja" id="demo-share"></div>
+          <div class="form-baris">
+            <p class="status" id="demo-hadir"></p>
+            <label class="centang"><input type="checkbox" id="demo-lengkap"> tampilkan bilangan besar secara lengkap</label>
+          </div>
+        </section>
+
+        <section class="langkah-demo">
+          <h3><span class="nomor">3</span>Buka kunci dengan usulan B</h3>
+          <p class="catatan">Tekan “Langkah berikutnya” untuk melihat bagaimana setiap kartu menyumbang satu digit, sampai
+            rahasianya muncul.</p>
+          <div id="demo-ringkasan"></div>
+          <div id="demo-pemutar"></div>
+
+          <h4>Tujuh metode pada share yang sama</h4>
+          <div class="gulir"><table class="tabel" id="demo-banding"></table></div>
+          <p class="catatan">Iterasi Euclid menunjukkan beratnya inversi. Perkalian modular adalah perkalian dua bilangan
+            selebar modulus lalu direduksi; perkalian kecil memakai selisih modulus atau koordinat peserta. Operasi bilangan
+            besar mencakup pembagian M/m<sub>j</sub>, reduksi bilangan yang terus membesar, dan langkah Horner. Waktunya ada
+            di bagian Hasil dan Benchmark, karena satu kali jalan terlalu dipengaruhi JIT.</p>
+
+          <details>
+            <summary>Parameter dan syarat Asmuth–Bloom</summary>
+            <div id="demo-param"></div>
+          </details>
+          <details>
+            <summary>Tabel lengkap langkah usulan B</summary>
+            <div id="demo-langkah-selisih"></div>
+          </details>
+          <details>
+            <summary>Tabel invers berpasangan dan langkah usulan A</summary>
+            <div>
+              <p class="catatan">Baris i, kolom j berisi c<sub>ij</sub> = m<sub>i</sub><sup>−1</sup> mod m<sub>j</sub>
+                untuk i &lt; j. Tabel ini boleh publik karena bisa dihitung siapa saja dari modulus. Entri yang dipakai
+                diberi warna.</p>
+              <div class="gulir" id="demo-tabel"></div>
+              <p class="catatan" id="demo-tabel-info"></p>
+              <div id="demo-langkah-garner"></div>
+            </div>
+          </details>
+          <details>
+            <summary>Langkah rumus CRT klasik (pembanding)</summary>
+            <div id="demo-langkah-klasik"></div>
+          </details>
+          <details>
+            <summary>Share Shamir untuk rahasia yang sama (pembanding)</summary>
+            <div id="demo-shamir"></div>
+          </details>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HASIL ===================== -->
+  <section class="adegan" id="hasil">
+    <div class="wadah" id="panel-hasil">
+      <h2>Hasil pengukuran</h2>
+      <p class="lead">Berapa lama waktu yang dibutuhkan untuk membuka kunci? Kami mengukurnya dengan program C. Angka “kali
+        lebih cepat” membandingkan waktu metode lain dengan waktu usulan B.</p>
+      <p class="pernyataan" id="kalimat-hasil" hidden></p>
+      <p class="catatan" id="hasil-sumber"></p>
+      <div class="pilih-L" id="hasil-pilih-L" role="tablist" aria-label="Ukuran rahasia"></div>
+      <p class="status" id="hasil-status" role="status"></p>
+      <div id="hasil-c"><p class="kosong">Belum ada data. Jalankan bin/bench.exe, lalu muat results/bench.csv lewat
+        bagian “Muat berkas hasil lain” di bawah.</p></div>
+      <h3>Rasio di program C dan di browser</h3>
+      <div id="hasil-banding"><p class="kosong">Jalankan benchmark di bagian Benchmark, atau muat CSV browser yang sudah
+        disimpan, untuk membandingkan rasio kedua lingkungan.</p></div>
+      <details class="muat-lain">
+        <summary>Muat berkas hasil lain</summary>
+        <div>
+          <div class="form-baris">
+            <label class="isian">results/bench.csv <input type="file" id="hasil-csv" accept=".csv,text/csv"></label>
+            <label class="isian">results/sizes.csv <input type="file" id="hasil-sizes" accept=".csv,text/csv"></label>
+            <label class="isian">CSV benchmark browser <input type="file" id="hasil-browser" accept=".csv,text/csv"></label>
+          </div>
+          <p class="catatan">Berkas dibaca langsung oleh browser dan tidak dikirim ke mana pun.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== UJI ===================== -->
+  <section class="adegan" id="uji">
+    <div class="wadah" id="panel-uji">
+      <h2>Uji kebenaran</h2>
+      <p class="lead">Halaman ini harus memberi angka yang sama dengan program C, dan semua metode harus selalu menemukan
+        rahasia yang benar.</p>
+
+      <section class="blok">
+        <h3>Pencocokan dengan program C</h3>
+        <p class="catatan">Contoh Bab 3.8 dibandingkan dengan keluaran bin/demo.exe, lalu beberapa modulus pertama yang dicari
+          ulang di browser dibandingkan dengan hasil ekspor bin/export_moduli.</p>
+        <div class="form-baris">
+          <button type="button" class="tombol" id="uji-cocok">Jalankan pencocokan</button>
+          <label class="centang"><input type="checkbox" id="uji-cocok-2048"> sertakan L = 2048 (sekitar 10–30 detik)</label>
+        </div>
+        <p class="status" id="uji-cocok-status" role="status"></p>
+        <div class="gulir"><table class="tabel" id="uji-cocok-tabel"></table></div>
+      </section>
+
+      <section class="blok">
+        <h3>Uji acak</h3>
+        <p class="catatan">Padanan bin/test.exe: dua belas konfigurasi dari (L, k, n) = (16, 2, 3) sampai (2048, 10, 20),
+          rahasia 0, 1, 2<sup>L</sup> − 1, dan rahasia acak. Ketujuh metode diperiksa, ditambah uji negatif: k − 1 share dan
+          share yang dirusak harus memberi hasil yang salah.</p>
+        <div class="form-baris">
+          <label class="isian sempit">Seed <input type="number" id="uji-seed" value="12345"></label>
+          <button type="button" class="tombol" id="uji-mulai">Jalankan uji</button>
+        </div>
+        <p class="status" id="uji-status" role="status"></p>
+        <pre class="log" id="uji-log"></pre>
+      </section>
+
+      <section class="blok">
+        <h3>Sebaran nilai rahasia dari k − 1 share</h3>
+        <p class="catatan">Parameter kecil seperti pada test.c: m<sub>0</sub> = 256, modulus 307, 311, 313, 317, 331, k = 3. Dari dua
+          share, semua y &lt; M<sub>3</sub> yang cocok dihitung, lalu dicatat nilai y mod 256 masing-masing. Kalau semua
+          batang setinggi 1 atau 2 dan tidak ada yang kosong, dua share tidak menyingkirkan satu pun nilai rahasia.</p>
+        <div class="form-baris">
+          <label class="isian sempit">Rahasia S (0–255) <input type="number" id="seb-S" min="0" max="255" value="200"></label>
+          <fieldset class="pilih-peserta">
+            <legend>Dua peserta</legend>
+            <label><input type="checkbox" name="seb-peserta" value="0" checked> 1</label>
+            <label><input type="checkbox" name="seb-peserta" value="1" checked> 2</label>
+            <label><input type="checkbox" name="seb-peserta" value="2"> 3</label>
+            <label><input type="checkbox" name="seb-peserta" value="3"> 4</label>
+            <label><input type="checkbox" name="seb-peserta" value="4"> 5</label>
+          </fieldset>
+          <button type="button" class="tombol" id="seb-hitung">Hitung sebaran</button>
+        </div>
+        <p class="status" id="seb-status" role="status"></p>
+        <div id="seb-grafik"></div>
+      </section>
+    </div>
+  </section>
+
+  <!-- ===================== BENCHMARK ===================== -->
+  <section class="adegan" id="benchmark">
+    <div class="wadah" id="panel-benchmark">
+      <h2>Benchmark di browser</h2>
+      <p class="lead">Ketujuh metode dijalankan dengan JavaScript BigInt, memakai modulus yang persis sama dengan program C.
+        Yang dibandingkan adalah urutan dan rasio antarmetode, bukan angka mutlaknya.</p>
+
+      <section class="blok">
+        <p class="catatan">Colok charger, tutup tab lain, dan biarkan halaman ini terbuka sampai selesai. Semua konfigurasi
+          dengan 30 pengulangan memakan waktu sekitar 2 sampai 5 menit.</p>
+        <div class="form-baris">
+          <fieldset class="pilih-banyak">
+            <legend>Ukuran rahasia L</legend>
+            <label><input type="checkbox" name="bm-L" value="256" checked> 256</label>
+            <label><input type="checkbox" name="bm-L" value="1024" checked> 1024</label>
+            <label><input type="checkbox" name="bm-L" value="2048" checked> 2048</label>
+          </fieldset>
+          <fieldset class="pilih-banyak">
+            <legend>(k, n)</legend>
+            <label><input type="checkbox" name="bm-kn" value="3,5" checked> (3, 5)</label>
+            <label><input type="checkbox" name="bm-kn" value="5,10" checked> (5, 10)</label>
+            <label><input type="checkbox" name="bm-kn" value="10,20" checked> (10, 20)</label>
+            <label><input type="checkbox" name="bm-kn" value="20,40" checked> (20, 40)</label>
+            <label><input type="checkbox" name="bm-kn" value="50,100" checked> (50, 100)</label>
+          </fieldset>
+        </div>
+        <div class="form-baris">
+          <label class="isian sempit">Pengulangan <input type="number" id="bm-reps" value="30" min="2"></label>
+          <label class="isian sempit">Pemanasan <input type="number" id="bm-warmup" value="3" min="0"></label>
+          <label class="isian sempit">Blok minimal (ms) <input type="number" id="bm-blok" value="20" min="1"></label>
+          <label class="isian sempit">Seed <input type="number" id="bm-seed" value="12345"></label>
+          <button type="button" class="tombol" id="bm-mulai">Mulai benchmark</button>
+          <button type="button" class="tombol kedua" id="bm-stop" disabled>Hentikan</button>
+        </div>
+        <div class="progres" aria-hidden="true"><div class="progres-isi" id="bm-bar"></div></div>
+        <p class="status" id="bm-status" role="status"></p>
+        <h3>Lingkungan</h3>
+        <dl class="lingkungan" id="bm-lingkungan"></dl>
+      </section>
+
+      <section class="blok">
+        <h3>Hasil</h3>
+        <div id="bm-hasil"><p class="kosong">Belum ada hasil. Pilih konfigurasi, lalu tekan Mulai benchmark.</p></div>
+      </section>
+
+      <section class="blok">
+        <h3>Data mentah (CSV)</h3>
+        <p class="catatan">Formatnya sama dengan results/bench.csv dari program C. Simpan sebagai
+          results/bench_browser.csv.</p>
+        <div class="form-baris">
+          <button type="button" class="tombol kedua" id="bm-unduh" disabled>Unduh CSV</button>
+          <button type="button" class="tombol kedua" id="bm-salin" disabled>Salin CSV</button>
+        </div>
+        <textarea id="bm-csv" rows="8" readonly spellcheck="false" aria-label="CSV hasil benchmark browser"></textarea>
+      </section>
+    </div>
+  </section>
+
+  <!-- ===================== TENTANG ===================== -->
+  <section class="adegan" id="tentang">
+    <div class="wadah prosa" id="panel-tentang">
+      <h2>Tentang proyek ini</h2>
+      <p class="lead">Halaman ini alat bantu untuk makalah kelompok kami. Program utamanya ditulis dalam bahasa C dengan
+        pustaka GMP, dan semua angka di makalah berasal dari program itu.</p>
+      <p class="catatan" id="id-penyusun" hidden></p>
+
+      <h3>Metode singkatnya</h3>
+      <p>Dealer memilih m<sub>0</sub> = 2<sup>L</sup> dan modulus prima berurutan m<sub>1</sub> &lt; ⋯ &lt; m<sub>n</sub>
+        yang memenuhi syarat Asmuth–Bloom m<sub>0</sub> · m<sub>n−k+2</sub> ⋯ m<sub>n</sub> &lt; m<sub>1</sub> ⋯
+        m<sub>k</sub>. Share peserta i adalah y mod m<sub>i</sub>, dengan y = S + A·m<sub>0</sub> dan A acak.</p>
+      <p>Usulan B memanfaatkan modulus yang berdekatan. Karena m<sub>b</sub> ≡ m<sub>b</sub> − m<sub>j</sub> (mod m<sub>j</sub>)
+        dan selisih itu bilangan kecil, setiap langkah Garner cukup memakai perkalian dengan selisih kecil, satu inversi hasil kali selisih (kecil selama k · log<sub>2</sub>(selisih)
+        jauh di bawah L), dan satu perkalian modular. Hasil akhirnya langsung y mod 2<sup>L</sup>; karena m mod 2<sup>L</sup> =
+        2<sup>h</sup> + e, perkaliannya cukup geser bit ditambah perkalian dengan bilangan kecil. Usulan B tidak memerlukan
+        tabel.</p>
+      <p>Usulan A, langkah pertama penelitian ini, memakai tabel invers berpasangan c<sub>ij</sub> = m<sub>i</sub><sup>−1</sup>
+        mod m<sub>j</sub>, sehingga rekonstruksi tidak memerlukan inversi modular sama sekali.</p>
+
+      <h3>Batasan</h3>
+      <p>Halaman ini alat demonstrasi, bukan aplikasi untuk mengamankan kunci sungguhan. Tidak ada verifikasi share, tidak
+        ada penyimpanan aman, dan skema Asmuth–Bloom sendiri tidak sempurna secara teori informasi. Bilangan acak pada demo
+        diambil dari Web Crypto API, sedangkan uji dan benchmark memakai pembangkit xorshift berseed supaya hasilnya bisa
+        diulang.</p>
+
+      <h3>Berkas</h3>
+      <div class="gulir">
+        <table class="tabel">
+          <thead><tr><th>Berkas</th><th>Isi</th><th>Padanan di program C</th></tr></thead>
+          <tbody>
+            <tr><td>js/aritmetika.js</td><td>reduksi modulo, invers (Euclid diperluas), eksponensiasi modular, Miller–Rabin, prima berikutnya, bilangan acak</td><td>fungsi GMP</td></tr>
+            <tr><td>js/skema.js</td><td>CRT klasik, Garner dengan inversi, Garner dengan tabel, Garner selisih kecil, Asmuth–Bloom, Shamir</td><td>crt.c, ab.c, shamir.c</td></tr>
+            <tr><td>js/modulus.js</td><td>modulus dan prima Shamir untuk L = 256, 1024, 2048</td><td>keluaran bin/export_moduli</td></tr>
+            <tr><td>js/uji.js</td><td>uji acak, pencocokan dengan program C, uji sebaran</td><td>test.c, demo.c</td></tr>
+            <tr><td>js/benchmark.js</td><td>pengukuran waktu dan pembacaan CSV</td><td>bench.c</td></tr>
+            <tr><td>js/hasil_c.js</td><td>hasil benchmark program C dari laptop uji</td><td>results/bench.csv, results/sizes.csv</td></tr>
+            <tr><td>js/identitas.js</td><td>nama kelompok, anggota, dan universitas yang tampil di halaman</td><td>–</td></tr>
+            <tr><td>js/grafik.js, js/app.js</td><td>grafik SVG dan antarmuka halaman</td><td>scripts/plot_results.py</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="kaki">
+  <div class="wadah"><p id="id-kaki">Alat demonstrasi, tidak untuk mengamankan kunci sungguhan.</p></div>
+</footer>
+<p class="petunjuk-presentasi" aria-live="polite">Panah kanan atau Page Down untuk adegan berikutnya, Esc untuk keluar.</p>
+
+<noscript><p class="wadah peringatan">Halaman ini membutuhkan JavaScript.</p></noscript>
+
+<script src="js/identitas.js"></script>
+<script src="js/aritmetika.js"></script>
+<script src="js/modulus.js"></script>
+<script src="js/skema.js"></script>
+<script src="js/uji.js"></script>
+<script src="js/benchmark.js"></script>
+<script src="js/grafik.js"></script>
+<script src="js/hasil_c.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

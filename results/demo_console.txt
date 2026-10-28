@@ -1,0 +1,53 @@
+Parameter: m0 = 16, modulus 23 29 31 37, k = 3, n = 4
+Syarat: 16*31*37 = 18352 < 23*29*31 = 20677
+S = 11, A = 321, y = 5147; share: (1, 18) (2, 14) (3, 1) (4, 4)
+
+Tabel invers berpasangan c_ij = m_i^-1 mod m_j:
+  c_12 = 24
+  c_13 = 27
+  c_14 = 29
+  c_23 = 15
+  c_24 = 23
+  c_34 = 6
+
+Rekonstruksi Garner + tabel (usulan A):
+  peserta 1 2 4 hadir; modulus 23 29 37; residu 18 14 4
+  v1 = 18
+  v2 = ((14 - 18) * c_12=24) mod 29 = 20
+  v3 = ((4 - 18) * c_14=29) mod 37 = 1; lalu ((1 - 20) * c_24=23) mod 37 = 7
+  Horner: y = 5147, rahasia = y mod 16 = 11
+  peserta 2 3 4 hadir; modulus 29 31 37; residu 14 1 4
+  v1 = 14
+  v2 = ((1 - 14) * c_23=15) mod 31 = 22
+  v3 = ((4 - 14) * c_24=23) mod 37 = 29; lalu ((29 - 22) * c_34=6) mod 37 = 5
+  Horner: y = 5147, rahasia = y mod 16 = 11
+  fungsi ab_reconstruct_table  -> 11
+  fungsi ab_reconstruct_garner -> 11
+  fungsi ab_reconstruct_classic-> 11
+
+Rekonstruksi Garner selisih kecil (usulan B):
+  peserta 1 2 4 hadir; modulus 23 29 37
+  v1 = 18
+  v2: s = 18, D = -6 = 23 mod 29, D^-1 = 24, v2 = ((14 - (18)) * 24) mod 29 = 20
+  v3: s = -262, D = 112 = 1 mod 37, D^-1 = 1, v3 = ((4 - (-262)) * 1) mod 37 = 7
+  y mod 16: S = 7 -> (S*13 + 20) mod 16 = 15 -> (S*7 + 18) mod 16 = 11
+  rahasia = 11
+  peserta 2 3 4 hadir; modulus 29 31 37
+  v1 = 14
+  v2: s = 14, D = -2 = 29 mod 31, D^-1 = 15, v2 = ((1 - (14)) * 15) mod 31 = 22
+  v3: s = -162, D = 48 = 11 mod 37, D^-1 = 27, v3 = ((4 - (-162)) * 27) mod 37 = 5
+  y mod 16: S = 5 -> (S*15 + 22) mod 16 = 1 -> (S*13 + 14) mod 16 = 11
+  rahasia = 11
+  fungsi ab_reconstruct_diff   -> 11
+
+Rumus CRT klasik untuk peserta 1, 2, 4 (M = 23*29*37 = 24679):
+  M_1 = 1073, M_1 mod 23 = 15, invers = 20, suku = 18*1073*20 = 386280
+  M_2 = 851, M_2 mod 29 = 10, invers = 3, suku = 14*851*3 = 35742
+  M_3 = 667, M_3 mod 37 = 1, invers = 1, suku = 4*667*1 = 2668
+  jumlah = 424690, mod 24679 = 5147, rahasia = 11
+
+Pembanding Shamir dengan p = 17, f(x) = 11 + 5x + 3x^2:
+  share: (1, 2) (2, 16) (3, 2) (4, 11)
+  dari peserta 1, 2, 4: lambda_1 = 8/3 = 14, lambda_2 = 4/(-2) = 15, lambda_4 = 2/6 = 6 (mod 17)
+  S = 2*14 + 16*15 + 11*6 = 334 mod 17 = 11
+  fungsi sh_reconstruct_batch  -> 11
